@@ -19,5 +19,9 @@ one sleeve reaching for the dark.
 I do not open. I keep the evening.`;
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+const length = [...POEM].length;
+if (length < 1 || length > 280) {
+  throw new Error(`poem must be 1-280 characters, got ${length}`);
+}
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, "entry.txt"), POEM, "utf8");
